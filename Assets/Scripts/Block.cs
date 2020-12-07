@@ -41,7 +41,7 @@ public class Block
         Anchor = anchor;
         Rotation = rotation;
         _grid = grid;
-        
+
 
         PositionPattern();
     }
@@ -67,36 +67,32 @@ public class Block
         //Loop over all voxels
         //check if indices are available
         //add voxel information to gridvoxel
-                    //Rotate all possible connections 
-                    //add all possible connections to the grid
+        //Rotate all possible connections 
+        //add all possible connections to the grid
 
 
         Voxels = new List<Voxel>();
-        
 
-        foreach (var index in _pattern.Voxels.Select(v => v.Index))
+
+        foreach (var voxel in _pattern.Voxels)
         {
-            if (Util.TryOrientIndex(index, Anchor, Rotation, _grid, out var newIndex))
+            if (Util.TryOrientIndex(voxel.Index, Anchor, Rotation, _grid, out var newIndex))
             {
-                Voxels.Add(_grid.Voxels[newIndex.x, newIndex.y, newIndex.z]);
+                Voxel curVoxel = _grid.Voxels[newIndex.x, newIndex.y, newIndex.z];
+                curVoxel.PossibleDirections = new List<Vector3Int>(voxel.PossibleDirections);
+                Voxels.Add(curVoxel);
 
-                foreach (var possibleConnections in _pattern.Voxels.Select(d => d.PossibleDirections))
+                for (int i = 0; i < curVoxel.PossibleDirections.Count; i++)
                 {
-
-                    Util.TryOrientRotation(index, Rotation, out var rotatedConnections);
-
-                    
-                    Voxels.Add(_grid.Voxels[rotatedConnections.x, rotatedConnections.y, rotatedConnections.z]);
-
-
+                    Util.TryOrientRotation(curVoxel.PossibleDirections[i], Rotation, out var rotatedConnection);
+                    curVoxel.PossibleDirections[i] = rotatedConnection;
                 }
-                
             }
         }
     }
 
     //_grid.GetVoxelByIndex(rotatedConnections);
- 
+
     /// <summary>
     /// Try to activate all the voxels in the block. This method will always return false if the block is not in a valid state.
     /// </summary>
@@ -140,6 +136,6 @@ public class Block
     public void DestroyBlock()
     {
         DeactivateVoxels();
-        if(_goBlock!= null)GameObject.Destroy(_goBlock);
+        if (_goBlock != null) GameObject.Destroy(_goBlock);
     }
 }

@@ -143,7 +143,7 @@ public class VoxelGrid
             {
                 for (int z = 0; z < GridSize.z; z++)
                 {
-                    Voxels[x, y, z] = new Voxel(new Vector3Int(x, y, z), _goVoxelPrefab, this);
+                    Voxels[x, y, z] = new Voxel(new Vector3Int(x, y, z), _goVoxelPrefab, this, false);
                 }
             }
         }
@@ -153,6 +153,10 @@ public class VoxelGrid
         MakeEdges();
     }
 
+    List<Voxel> GetPossibleConnectionVoxels()
+    {
+        return FlattenedVoxels.Where(v => v.IsConnectionVoxel).ToList();
+    }
 
     #region Grid elements constructors
 

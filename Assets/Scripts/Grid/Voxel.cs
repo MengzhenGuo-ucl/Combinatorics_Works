@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum VoxelState { Dead = 0, Alive = 1, Available = 2 }
+public enum VoxelState { Dead = 0, Alive = 1, Available = 2 }//add connection state, replace the IsConnectionVoxel with this state
 public class Voxel
 {
     #region Public fields
     public Vector3Int Index;
     public List<Face> Faces = new List<Face>(6);
     public List<Vector3Int> PossibleDirections;
+    public bool PatternVoxel;
+    public bool IsConnectionVoxel
+    {
+        get
+        {
+            return PossibleDirections.Count > 0;
+        }
+    }
 
 
     #endregion
@@ -87,23 +95,22 @@ public class Voxel
     /// </summary>
     /// <param name="index">index of the voxel</param>
     /// <param name="goVoxel">prefab of the voxel gameobject</param>
-    public Voxel(Vector3Int index, GameObject goVoxel, VoxelGrid grid)
+    public Voxel(Vector3Int index, GameObject goVoxel, VoxelGrid grid, bool patternVoxel)
     {
         _grid = grid;
         Index = index;
         _goVoxel = GameObject.Instantiate(goVoxel, Centre, Quaternion.identity);
         _goVoxel.GetComponent<VoxelTrigger>().TriggerVoxel = this;
         _goVoxel.transform.localScale = Vector3.one * _grid.VoxelSize * 0.95f;
+        PatternVoxel = patternVoxel;
         Status = VoxelState.Available;
     }
 
-    public Voxel(Vector3Int index, List<Vector3Int> possibleDirections)
+    public Voxel(Vector3Int index, List<Vector3Int> possibleDirections, bool patternVoxel)
     {
         Index = index;
         PossibleDirections = possibleDirections;
-        Status = VoxelState.Available;
-
-
+        PatternVoxel = patternVoxel;
     }
     #endregion
 

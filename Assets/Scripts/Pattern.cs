@@ -40,37 +40,37 @@ public class PatternManager
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        },true));
         patternA.Add(new Voxel(new Vector3Int(1, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
         
-        }));
+        }, true));
         patternA.Add(new Voxel(new Vector3Int(2, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternA.Add(new Voxel(new Vector3Int(3, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternA.Add(new Voxel(new Vector3Int(4, 0, 0), new List<Vector3Int>(){
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternA.Add(new Voxel(new Vector3Int(5, 0, 0), new List<Vector3Int>(){
         new Vector3Int(1,0,0),//X
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
 
         AddPattern(patternA, PatternType.PatternA);
 
@@ -82,37 +82,37 @@ public class PatternManager
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternB.Add(new Voxel(new Vector3Int(1, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
         
-        }));
+        }, true));
         patternB.Add(new Voxel(new Vector3Int(2, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternB.Add(new Voxel(new Vector3Int(3, 0, 0), new List<Vector3Int>() {
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternB.Add(new Voxel(new Vector3Int(4, 0, 0), new List<Vector3Int>(){
         new Vector3Int(0,-1,0),//-Y
         new Vector3Int(0,1,0),//Y
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
         patternB.Add(new Voxel(new Vector3Int(5, 0, 0), new List<Vector3Int>(){
         new Vector3Int(1,0,0),//X
         new Vector3Int(0,0,1),//Z
         new Vector3Int(0,0,-1),//-Z
-        }));
+        }, true));
 
         AddPattern(patternB, PatternType.PatternB);
     }
